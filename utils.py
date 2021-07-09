@@ -75,7 +75,7 @@ def get_train_transform(MEAN, STD, PAD=4):
                                             value=(MEAN)),
                                 A.RandomCrop(32, 32),
                                 A.HorizontalFlip(p=0.5),
-                                A.Cutout(max_h_size=8, max_w_size=8),
+                                A.Cutout(max_h_size=16, max_w_size=8),
                                 A.Normalize(mean=(MEAN), 
                                             std=STD),
                                 ToTensorV2(),

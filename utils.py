@@ -17,6 +17,9 @@ import torch.optim as optim
 import lr_module
 
 import numpy as np
+import torch.nn as nn
+import matplotlib.pyplot as plt
+from torch.utils.tensorboard import SummaryWriter
 
 train_losses = []
 test_losses = []

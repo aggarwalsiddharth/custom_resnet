@@ -9,7 +9,7 @@ import torch.optim as optim
 
 PAD = 4
 EPOCHS = 24
-LR  = 0.0001
+LR  = 0.001
 MOMENTUM= 0.9
 lr_max_epoch = 5
 
@@ -50,7 +50,7 @@ criterion = nn.CrossEntropyLoss()
 optimizer = optim.SGD(model.parameters(), lr=LR, momentum=MOMENTUM)
 
 start_lr = LR
-end_lr = 0.1
+end_lr = 0.05
 num_iterations = 200
 lrmax= find_lr(model,trainloader, testloader, start_lr, end_lr)
 

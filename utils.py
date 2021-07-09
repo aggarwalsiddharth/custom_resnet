@@ -142,9 +142,9 @@ def get_train_loader(transform=None):
   else:
     trainset = Cifar10SearchDataset(root="~/data/cifar10", train=True, 
                                     download=True)
-  trainloader = torch.utils.data.DataLoader(trainset, batch_size=128,
+  trainloader = torch.utils.data.DataLoader(trainset, batch_size=512,
                                             shuffle=True, num_workers=2)
-  return(trainloader)
+  return trainloader
 
 
 def get_test_loader(transform=None):
@@ -158,10 +158,10 @@ def get_test_loader(transform=None):
     testset = Cifar10SearchDataset(transform=transform, train=False)
   else:
     testset = Cifar10SearchDataset(train=False)
-  testloader = torch.utils.data.DataLoader(testset, batch_size=128, 
+  testloader = torch.utils.data.DataLoader(testset, batch_size=512, 
                                          shuffle=False, num_workers=2)
 
-  return(testloader)
+  return testloader
 
 
 def get_device():
@@ -187,7 +187,7 @@ def get_device():
   return(device)
 
 
-def find_lr(self,model,train_loader, test_loader, start_lr, end_lr):
+def find_lr(model,train_loader, test_loader, start_lr, end_lr):
         
         
         num_iterations = len(test_loader) * 25

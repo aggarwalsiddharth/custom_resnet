@@ -52,7 +52,7 @@ optimizer = optim.SGD(model.parameters(), lr=LR, momentum=MOMENTUM)
 start_lr = LR
 end_lr = 0.1
 num_iterations = 200
-lrmax= find_lr(model,trainloader, testloader, start_lr, end_lr, num_iterations)
+lrmax= find_lr(model,trainloader, testloader, start_lr, end_lr)
 
 print('Found lrmax = ',lrmax)
 

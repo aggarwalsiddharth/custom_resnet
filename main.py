@@ -52,12 +52,12 @@ optimizer = optim.SGD(model.parameters(), lr=LR, momentum=MOMENTUM)
 start_lr = LR
 end_lr = 0.1
 num_iterations = 200
-lrmax= find_lr(model,train_loader, test_loader, start_lr, end_lr, num_iterations)
+lrmax= find_lr(model,trainloader, testloader, start_lr, end_lr, num_iterations)
 
 print('Found lrmax = ',lrmax)
 
 scheduler = OneCycleLR(optimizer=optimizer, max_lr=lrmax,
-                                  epochs=EPOCHS, steps_per_epoch=len(train_loader),
+                                  epochs=EPOCHS, steps_per_epoch=len(trainloader),
                                   pct_start=lr_max_epoch/EPOCHS,div_factor=8)
 
 

@@ -1,4 +1,4 @@
-from models.resnet import *
+from model import *
 from utils import *
 
 
@@ -40,11 +40,10 @@ print(f"----------Device type - {device}----------")
 
 
 print(f"----------Model Summary----------")
-model = ResNet18().to(device)
+model = CustomResNet().to(device)
 get_summary(model, device)
 
 
-model =  CustomResNet()
 
 print("----------Find max_lr------------")
 criterion = nn.CrossEntropyLoss()

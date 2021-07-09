@@ -68,14 +68,18 @@ class UnNormalize(object):
 
 def get_train_transform(MEAN, STD, PAD=4):
 
-    train_transform = A.Compose([A.PadIfNeeded(min_height=40, min_width=40, always_apply=True),
-                                      A.RandomCrop(width=32, height=32,p=1),
-                                      A.HorizontalFlip(p=1),
-                                      A.CoarseDropout(max_holes=3,min_holes = 1, max_height=8, max_width=8, p=0.8,fill_value=tuple([x * 255.0 for x in MEAN]),
-                                      min_height=8, min_width=8),
-                                      A.Normalize(mean=MEAN, std=STD,always_apply=True),
-                                      ToTensorV2()
-                                    ])
+    train_transform = A.Compose([
+                                A.PadIfNeeded(min_height=32+PAD, 
+                                            min_width=32+PAD, 
+                                            border_mode=cv2.BORDER_CONSTANT,
+                                            value=(MEAN)),
+                                A.RandomCrop(32, 32),
+                                A.HorizontalFlip(p=0.5),
+                                A.Cutout(max_h_size=8, max_w_size=8),
+                                A.Normalize(mean=(MEAN), 
+                                            std=STD),
+                                ToTensorV2(),
+    ])
 
 
     return(train_transform)

@@ -10,7 +10,7 @@ import torch.optim as optim
 PAD = 4
 EPOCHS = 24
 LR  = 0.0001
-MOMENTUM= 0.8
+MOMENTUM= 0.9
 lr_max_epoch = 5
 
 
@@ -92,16 +92,16 @@ print(f"----------Visualize misclassified predictions----------")
 show_images_pred(test_images[miss_index], test_targets[miss_index], test_predictions[miss_index], denorm)
 
 
-print(f"----------Generate heatmaps for test images----------")
-heatmaps = gradcam_heatmap(model, test_predictions, test_images, device)
+# print(f"----------Generate heatmaps for test images----------")
+# heatmaps = gradcam_heatmap(model, test_predictions, test_images, device)
 
 
-hit_maps = heatmaps[hit_index]
-miss_maps = heatmaps[miss_index]
+# hit_maps = heatmaps[hit_index]
+# miss_maps = heatmaps[miss_index]
 
-print(f"----------Visualize misclassified GRADCAM----------")
-show_images_cam(test_images, test_targets, test_predictions, heatmaps, miss_index, denorm)
+# print(f"----------Visualize misclassified GRADCAM----------")
+# show_images_cam(test_images, test_targets, test_predictions, heatmaps, miss_index, denorm)
 
 
-print(f"----------Visualize correctly classified GRADCAM----------")
-show_images_cam(test_images, test_targets, test_predictions, heatmaps, hit_index, denorm)
+# print(f"----------Visualize correctly classified GRADCAM----------")
+# show_images_cam(test_images, test_targets, test_predictions, heatmaps, hit_index, denorm)
